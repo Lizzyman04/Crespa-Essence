@@ -18,6 +18,7 @@
 * {
     box-sizing: border-box;
     transition: all ease-in-out 1s;
+    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
 }
@@ -168,13 +169,13 @@ header {
 }
 
 .product-details-header h1 {
-    font-size: 3rem;
+    font-size: 48px;
     line-height: 1.2;
     margin: 0;
 }
 
 .product-details-desc p {
-    font-size: 1.1rem;
+    font-size: 17.6px;
     margin: 20px 0;
     color: var(--boulder);
     line-height: 2;
@@ -240,35 +241,71 @@ header {
     }
 }
 
-
-.buy-it-now {
+.product-details-desc div button {
     padding: 10px 20px;
     font-size: 1.2rem;
-    color: var(--white);
     width: 200px;
-    margin: 64px 0;
-    background-color: var(--bg-button);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     align-items: center;
+    justify-content: center;
     display: flex;
     gap: 8px;
     height: fit-content;
     transition: background-color 0.3s ease, transform 0.3s ease;
     position: relative;
     z-index: 1;
+    text-align: center;
+}
+
+.see-price {
+    color: var(--black);
+    margin: 64px 0 32px 0;
+    background-color: var(--bg-hover);
+}
+
+.buy-it-now {
+    color: var(--white);
+    margin: 32px 0 64px 0;
+    background-color: var(--bg-button);
 }
 
 .buy-it-now:hover {
     background-color: var(--button-hover);
-    transform: scale(1.05);
 }
 
 .next-icon {
     --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2' d='M2 12h20m-9-9l9 9l-9 9'/%3E%3C/svg%3E");
     -webkit-mask-image: var(--svg);
     mask-image: var(--svg);
+}
+
+.price-icon {
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.5'%3E%3Cpath d='M4.728 16.137c-1.545-1.546-2.318-2.318-2.605-3.321c-.288-1.003-.042-2.068.45-4.197l.283-1.228c.413-1.792.62-2.688 1.233-3.302c.614-.613 1.51-.82 3.302-1.233l1.228-.284c2.13-.491 3.194-.737 4.197-.45c1.003.288 1.775 1.061 3.32 2.606l1.83 1.83C20.657 9.248 22 10.592 22 12.262c0 1.671-1.344 3.015-4.033 5.704c-2.69 2.69-4.034 4.034-5.705 4.034c-1.67 0-3.015-1.344-5.704-4.033z' opacity='0.5'/%3E%3Cpath stroke-linecap='round' d='M15.39 15.39c.585-.587.664-1.457.176-1.946c-.488-.488-1.359-.409-1.945.177c-.585.586-1.456.665-1.944.177c-.488-.488-.409-1.359.177-1.944m3.535 3.535l.354.354m-.354-.354c-.4.401-.935.565-1.389.471m-2.5-4.36l.354.354m0 0c.331-.332.753-.5 1.146-.497'/%3E%3Ccircle cx='8.607' cy='8.879' r='2' transform='rotate(-45 8.607 8.879)'/%3E%3C/g%3E%3C/svg%3E");
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+}
+
+/* Removing and adding items */
+#see-price,
+#buy-product {
+    transition: opacity 5s ease, transform 3s ease 5s;
+}
+
+#see-price.remove_product_button,
+#buy-product.remove_product_button {
+    opacity: 0 !important;
+    transform: scale(0) translateY(-20px) !important;
+}
+
+#product-image {
+    transition: opacity 4s ease, transform 10s ease;
+}
+
+#product-image.remove_product_img {
+    opacity: 0 !important;
+    transform: translateY(20px) !important;
 }
 
 /* Qualities - Product */
@@ -283,6 +320,8 @@ header {
     gap: 20px;
     text-align: center;
     padding: 40px 40px 0 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .quality {
@@ -305,6 +344,7 @@ header {
 @media screen and (max-width: 576px) {
     .qualities {
         padding: 40px;
+        padding-top: 0;
     }
 }
 
@@ -360,16 +400,172 @@ header {
     height: 2rem;
 }
 
-/* (Crafted with ♥ by Lizzyman) {
+/* Prices */
+.pricing {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.pricing-header {
+    font-size: 42px;
+    line-height: 1.2;
+    margin: 0;
+    text-transform: uppercase;
+    color: var(--logo-color-4);
+}
+
+.pricing-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.price-card {
+    background-color: var(--white);
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.price-card:hover {
+    transform: scale(1.05);
+}
+
+.price-header {
+    background-color: var(--bg-hover);
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.price-header h2 {
+    font-size: 24px;
+    color: var(--logo-color-4);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.price-header .info {
+    font-size: 11.7px;
+}
+
+.price-tag {
+    display: block;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--black);
+    margin-top: 10px;
+}
+
+.discount {
+    display: block;
+    font-size: 24px;
+    color: var(--c94161);
+    margin-top: 10px;
+}
+
+.info {
+    display: block;
+    font-size: 18px;
+    color: var(--logo-color-4);
+    margin-top: 5px;
+}
+
+.feature-list {
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    list-style: none;
+}
+
+.feature-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    font-size: 16px;
+    padding: 10px 0;
+    color: var(--boulder);
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.price-action {
+    text-align: center;
+    margin: 20px 0 30px;
+}
+
+.price-action button {
+    background-color: var(--bg-button);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.price-action button:hover {
+    background-color: var(--button-hover);
+}
+
+@media (max-width: 767px) {
+    .price-card {
+        width: 100%;
+    }
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+}
+
+footer .slogan {
+    margin: 0;
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+footer .hire-me {
     border-radius: 0 30px 30px 0;
     text-align: center;
     display: block;
     text-decoration: none;
-    color: var(--color-gray);
+    color: #666;
     font-weight: 400;
     font-size: 13px;
     text-shadow: none;
     font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
     flex: 1;
-    margin-bottom: 10px;
-} */
+    margin-top: 10px;
+}
+
+footer .hire-me a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer .hire-me a:hover {
+    text-decoration: underline;
+}

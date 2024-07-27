@@ -36,29 +36,29 @@
                 <li class="nav-item"><a href="#contact">Contacto</a></li>
             </ul>
         </nav>
-        <button class="buy-now">Adquirir</button>
+        <button class="buy-now" id="buy-products">Adquirir</button>
     </header>
     <main>
         <!-- Products (All products will appear (js-script will be used)) -->
         <section class="hero" id="products">
             <div class="products-container">
                 <div class="product-details-header">
-                    <h1 id="product-name">DuoNutri</h1>
+                    <h1 id="product-name"></h1>
                 </div>
                 <div class="product-details">
                     <div class="product-details-desc">
-                        <p id="product-desc-1">O DuoNutri é composto por Óleo de Rícino, cravo-da-índia e algumas ervas
-                            essenciais.</p>
+                        <p id="product-desc-1"></p>
                         <div>
                             <div>
-                                <p id="product-desc-2"> Ele hidrata e nutre o cabelo, estimula o crescimento, reduz o
-                                    frizz, fortalece os fios, controla a oleosidade e dá um brilho natural ao cabelo.
-                                </p>
-                                <button class="buy-it-now">Adquirir agora <span
+                                <p id="product-desc-2"></p>
+                                <button class="see-price remove_product_button" id="see-price">Ver preço<span
+                                        class="css-icon price-icon"></span></button>
+                                <button class="buy-it-now remove_product_button" id="buy-product">Adquirir agora <span
                                         class="css-icon next-icon"></span></button>
                             </div>
                             <div class="product-img">
-                                <img src="products/DuoNutri.png" alt="DuoNutri">
+                                <img id="product-image" src="products/DuoNutri.webp" alt="DuoNutri"
+                                    class="remove_product_img">
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,80 @@
                 </div>
             </div>
         </section>
+        <!-- Prices -->
+        <section class="pricing" id="prices">
+            <h1 class="pricing-header">Preços</h1>
+            <div class="pricing-container">
+        
+                <!-- First Price Content -->
+                <div class="price-card" id="DuoNutri-price">
+                    <div class="price-header">
+                        <h2>DuoNutri</h2>
+                        <span class="price-tag">185 MZN</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>Hidrata e nutre o cabelo</li>
+                        <li>Estimula o crescimento</li>
+                        <li>Reduz o frizz</li>
+                        <li>Fortalece os fios</li>
+                        <li>Controla a oleosidade</li>
+                        <li>Dá um brilho natural ao cabelo</li>
+                    </ul>
+                    <div class="price-action">
+                        <button id="buy-duonutri">Comprar Agora</a>
+                    </div>
+                </div>
+        
+                <!-- Second Price Content -->
+                <div class="price-card active">
+                    <div class="price-header">
+                        <h2>DuoNutri</h2>
+                        <span class="discount">10% Off</span>
+                        <span class="info">Compre 8 frascos e ganhe 10% de desconto</span>
+                        <span class="price-tag">166.50 MZN</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>Hidrata e nutre o cabelo</li>
+                        <li>Estimula o crescimento</li>
+                        <li>Reduz o frizz</li>
+                        <li>Fortalece os fios</li>
+                        <li>Controla a oleosidade</li>
+                        <li>Dá um brilho natural ao cabelo</li>
+                    </ul>
+                    <div class="price-action">
+                        <button id="buy-duonutri-10off">Comprar Agora</a>
+                    </div>
+                </div>
+        
+                <!-- Third Price Content -->
+                <div class="price-card" id="AmlaMix-price">
+                    <div class="price-header">
+                        <h2>AmlaMix</h2>
+                        <span class="price-tag">285 MZN</span>
+                    </div>
+                    <ul class="feature-list">
+                        <li>Estimula o crescimento capilar</li>
+                        <li>Previne a queda capilar</li>
+                        <li>Combate cabelos grisalhos precoces</li>
+                        <li>Condiciona e hidrata</li>
+                        <li>Combate a caspa</li>
+                        <li>Ajuda os cabelos a ficarem mais pretos</li>
+                    </ul>
+                    <div class="price-action">
+                        <button id="buy-amlamix">Comprar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
     </main>
+    <footer>
+        <p class="slogan">Revele a essência do seu crespo</p>
+        <div class="copyright">
+            <p>Todos os direitos reservados &copy; 2024 - Crespa Essence</p>
+        </div>
+        <p class="hire-me">Crafted with ❤️ by <a href="https://github.com/Lizzyman04" target="_blank">Lizzyman</a></p>
+    </footer>
     <script src="/assets/js/script.js"></script>
 </body>
 
