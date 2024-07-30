@@ -1,3 +1,14 @@
+/*
+ * Crespa Essence - Landing Page
+ * Programado por: Arlindo Abdul
+ * Email: admin@tudocomlizzyman.com
+ * Repositório: https://github.com/Lizzyman04/Crespa-Essence
+ * Licença: MIT
+ * 
+ * Este código é parte de uma landing page para vender produtos cosméticos via WhatsApp
+ * Você pode baixar, editar ou alterar qualquer parte deste código para fins pessoais ou comerciais
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
@@ -14,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 "p1": "O AmlaMix é composto por pó de Amla, ervas essências e alguns óleos.",
                 "p2": "Ele estimula o crescimento capilar, previne a queda capilar, combate cabelos grisalhos precoces, condiciona e hidrata combate a caspa, fortalece o cabelo, melhora a circulação sanguínea no couro cabeludo e o pulo do gato, ajuda os cabelos a ficarem mais pretinhos."
             }
+        },
+        tutorial = {
+            "Como colocar o AmlaMix no cabelo com tranças?": "tutorial/amlamix-com-trancas.mp4"
         }
 
     const typingSpeed = 80;
@@ -30,12 +44,21 @@ document.addEventListener('DOMContentLoaded', () => {
         see_product_price = document.querySelector('#see-price'),
         buy_product_now = document.querySelector('#buy-product'),
         buy_duonutri = document.querySelector('#buy-duonutri'),
-        buy_amlamix = document.querySelector('#buy-duonutri-10off'),
-        buy_duonutri10off = document.querySelector('#buy-amlamix');
+        buy_amlamix = document.querySelector('#buy-amlamix'),
+        buy_duonutri10off = document.querySelector('#buy-duonutri-10off'),
+        slider = document.querySelector('#slider'),
+        video_title = document.querySelector('.video-title'),
+        left_slide = document.querySelector('.left-slide'),
+        right_slide = document.querySelector('.right-slide'),
+        message = document.querySelector('#message'),
+        send_whatsapp_message = document.querySelector('.send-whatsapp-message'),
+        send_sms = document.querySelector('.send-sms');
 
     // Events
-    let currentProduct = initialProduct;
+    let currentProduct = initialProduct, index = 0;
+
     displayProductDetails(currentProduct);
+    displayVideoSlider(tutorial);
 
     buy_products.addEventListener('click', () => {
         redirectToWhatsApp("Olá Crespa Essence, estou interessada(o) em adquirir um dos seus produtos!");
@@ -58,12 +81,28 @@ document.addEventListener('DOMContentLoaded', () => {
         redirectToWhatsApp("Olá Crespa Essence, estou interessada(o) em adquirir mais de 8 frascos do produto DuoNutri!");
     });
 
+    send_whatsapp_message.addEventListener('click', () => {
+        redirectToWhatsApp(message.value);
+    });
+
+    send_sms.addEventListener('click', () => {
+        sendSMS(message.value);
+    });
+
     see_product_price.addEventListener('click', (event) => {
         const product = event.currentTarget.getAttribute('data-product');
         const priceSection = document.getElementById(`${product}-price`);
         if (priceSection) {
             priceSection.scrollIntoView({ behavior: 'smooth' });
         }
+    });
+
+    left_slide.addEventListener('click', () => {
+        moveToSlide(tutorial, index - 1);
+    });
+
+    right_slide.addEventListener('click', () => {
+        moveToSlide(tutorial, index + 1);
     });
 
     // Functions
@@ -93,6 +132,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200);
     }
 
+    function displayVideoSlider(tutorials) {
+        const titles = Object.keys(tutorials);
+
+        titles.forEach(title => {
+            const slide = document.createElement('div');
+            slide.className = 'slide';
+
+            const video = document.createElement('video');
+            video.src = tutorials[title];
+            video.controls = true;
+
+            slide.appendChild(video);
+            slider.appendChild(slide);
+        });
+
+        video_title.textContent = titles[0];
+    }
+
+    function moveToSlide(tutorials, i) {
+        const slider = document.querySelector('#slider');
+        const slides = document.querySelectorAll('.slide');
+        const titles = Object.keys(tutorials);
+
+        if (i >= slides.length) {
+            i = 0;
+        } else if (i < 0) {
+            i = slides.length - 1;
+        }
+
+        video_title.textContent = titles[i];
+        slider.style.transform = `translateX(${-i * 100}%)`;
+        index = i;
+    }
+
     function typeWriter(element, text, textPos, callback, callback_delay) {
         element.innerHTML = text.substring(0, textPos) + (textPos < text.length ? '|' : '');
 
@@ -115,6 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function redirectToWhatsApp(message) {
         const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function sendSMS(message) {
+        const url = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     }
 });
