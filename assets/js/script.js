@@ -5,7 +5,7 @@
  * Repositório: https://github.com/Lizzyman04/Crespa-Essence
  * Licença: MIT
  * 
- * Este código é parte de uma landing page para vender produtos cosméticos via WhatsApp
+ * Esta é uma simples landing page para vender produtos cosméticos a partir do WhatsApp
  * Você pode baixar, editar ou alterar qualquer parte deste código para fins pessoais ou comerciais
  */
 
@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         tutorial = {
-            "Como colocar o AmlaMix no cabelo com tranças?": "tutorial/amlamix-com-trancas.mp4"
+            "Como colocar o AmlaMix no cabelo com tranças?": "tutorial/amlamix-com-trancas.mp4",
+            "Quais são os benefícios do óleo DuoNutri?": "tutorial/beneficios-duonutri.mp4",
+            "Quais são os benefícios do óleo AmlaMix?": "tutorial/beneficios-amlamix.mp4"
         }
 
     const typingSpeed = 80;
