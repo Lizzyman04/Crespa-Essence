@@ -82,7 +82,7 @@ Por favor, não remova as informações do autor. Este projeto levou 27h para se
 - **Programado por:** Arlindo Abdul
 - **Email:** [admin@tudocomlizzyman.com](mailto:admin@tudocomlizzyman.com)
 - **Repositório:** [https://github.com/Lizzyman04/Crespa-Essence](https://github.com/Lizzyman04/Crespa-Essence)
-- **Website**: [Crespa Essence](lizzyman04.github.io/Crespa-Essence)
+- **Website**: [Crespa Essence | Revele a essência do seu crespo](https://lizzyman04.github.io/Crespa-Essence)
 
 Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
