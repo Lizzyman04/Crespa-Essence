@@ -75,6 +75,10 @@ Para configurar uma página de erro personalizada, edite o 404.html (certifique-
    }
    ```
 
+##### SEO
+
+Edite também o arquivo `sitemap.xml`, inserindo a URL e as datas de modificações correctas, isso ajuda a permitir melhor indexação do site nos motores de busca. Confira também se o arquivo `robots.txt` está configurado correctamente.
+
 ### Autor
 
 Por favor, não remova as informações do autor. Este projeto levou 27h para ser concluído.
